@@ -1,6 +1,6 @@
 {
   "name": "vue-simple-persist",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -8,7 +8,9 @@
     "lint": "eslint --ext .js ./"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
+  },
   "peerDependencies": {},
   "devDependencies": {
     "babel-core": "^6.25.0",
