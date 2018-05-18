@@ -23,5 +23,21 @@
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^2.1.2",
     "jest": "^22.0.4"
-  }
+  },
+  "description": "A mixin for storing component state in localStorage and reload it automatically upon remount. Useful for persisting input values when navigating away from a view, providing extra convenience to users.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eiskis/vue-simple-persist.git"
+  },
+  "keywords": [
+    "vue",
+    "mixin",
+    "persist",
+    "localstorage"
+  ],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Eiskis/vue-simple-persist/issues"
+  },
+  "homepage": "https://github.com/Eiskis/vue-simple-persist#readme"
 }
