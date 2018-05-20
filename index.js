@@ -18,37 +18,41 @@ export default {
 	watch: {
 
 		// Store serialized data into localStorage when it changes (throttled)
-		persist: debounce((data) => {
-			if (this.persistKey) {
-				localStorage.setItem(prefix + this.persistKey, JSON.stringify(data))
+		// NOTE: need to use `function` so `this` won't get messed up
+		persist: debounce(function (data) {
+			if (!process.server) {
+				if (this.persistKey) {
+					localStorage.setItem(prefix + this.persistKey, JSON.stringify(data))
+				}
 			}
 		}, 500)
 
 	},
 
 	created () {
-		if (this.persistKey && this.persist) {
+		if (!process.server) {
+			if (this.persistKey && this.persist) {
 
-			// Load serialized data from localStorage
-			// NOTE: this is a synchronous operation, theoretically it might slow things down
-			var data = localStorage.getItem(prefix + this.persistKey)
+				// Load serialized data from localStorage
+				// NOTE: this is a synchronous operation, theoretically it might slow things down
+				var data = localStorage.getItem(prefix + this.persistKey)
 
-			if (data) {
-				try {
-					data = JSON.parse(data)
+				if (data) {
+					try {
+						data = JSON.parse(data)
 
-					// We found data in local storage, let's load it up
-					if (data) {
-						this.persist = data
+						// We found data in local storage, let's load it up
+						if (data) {
+							this.persist = data
+						}
+
+					} catch (error) {
+						console.error(error)
 					}
-
-				} catch (error) {
-					console.error(error)
 				}
+
 			}
-
 		}
-
 	}
 
 }
