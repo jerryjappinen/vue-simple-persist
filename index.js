@@ -44,6 +44,10 @@ export default {
 						// We found data in local storage, let's load it up
 						if (data) {
 							this.persist = data
+
+							// Fire event
+							this.$emit('localstorage-loaded', data)
+
 						}
 
 					} catch (error) {
